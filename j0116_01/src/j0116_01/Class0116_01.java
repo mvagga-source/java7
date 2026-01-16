@@ -13,7 +13,7 @@ public class Class0116_01 {
 
 		System.out.print("번호:1");
 		System.out.print("국어:100\t");
-		System.out.print("영어:100");		
+		System.out.print("영어:100");		   
 		System.out.print("수학:101");	
 		
 	}
