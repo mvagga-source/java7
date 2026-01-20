@@ -17,6 +17,5 @@ public class C02 {
 		
 		int [][] arr2 = new int[2][3];
 		
-		
 	}
 }
