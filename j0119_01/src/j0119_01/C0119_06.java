@@ -7,6 +7,14 @@ public class C0119_06 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+//		byte + byte	= int
+//		short + short = int
+//		char + char = int
+//		int + int = int
+//		long + int = long
+//		float + int = float
+//		double + float = double		
+		
 		Scanner scanner = new Scanner(System.in);
 		
 //		0.0 <= Math.random() < 1.0
@@ -74,14 +82,14 @@ public class C0119_06 {
 		
 		String num1 = "9789057899979971234567";
 		
-		if(num1.contains("9")) {
-			System.out.println("존재 합니다.");
-		}else {
-			System.out.println("존재하지 않습니다.");
-		}
+//		if(num1.contains("9")) {
+//			System.out.println("존재 합니다.");
+//		}else {
+//			System.out.println("존재하지 않습니다.");
+//		}
 		
 		
-		System.out.println(num1.indexOf("7"));
+//		System.out.println(num1.indexOf("7"));
 		
 //		if(num1.indexOf("7") == -1) {
 //			System.out.println("존재하지 않습니다.");
@@ -89,19 +97,27 @@ public class C0119_06 {
 //			System.out.println("문자위치 : "+num1.indexOf("7"));
 //		}
 		
-		System.out.println(num1.indexOf("7",7));
+//		System.out.println(num1.indexOf("7",7));
 		
+		int count = 0;
 		for(int i = 0;;) {
 			
 			if (num1.indexOf("7",i) > 0) {
 					System.out.println(num1.indexOf("7",i));
+					i = num1.indexOf("7",i)+1;
+					count += 1;
 			}else {
-				
+				break;
 			}
-			
-			
-			break;
 		}
+		
+		System.out.println("갯수 : "+count);
+		
+		
+		byte a = 10;
+		byte b = 20;
+		
+		int c = a + b;
 		
 		
 		
