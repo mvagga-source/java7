@@ -29,10 +29,7 @@ public class C0122_05 {
 		return (double)a/b;
 	}
 	
-	static int addSub(int a,int b) {
-		
-	}
-	
+
 	public static void main(String[] args) {
 		
 		int a = 10;
