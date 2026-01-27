@@ -49,6 +49,8 @@ public class C08 {
 				System.out.println();
 				
 				break;
+			case 3:
+				break;
 			default:
 				break loop;
 			}//switch
