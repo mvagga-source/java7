@@ -1,4 +1,4 @@
-package j0126_03;
+package j0126_03;  // package : 폴더
 
 public class C01 {
 
