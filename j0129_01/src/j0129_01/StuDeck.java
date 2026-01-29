@@ -1,4 +1,4 @@
-package j0128_02;
+package j0129_01;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class StuDeck {
 	
 	Scanner scan = new Scanner(System.in);
-	ArrayList list = new ArrayList();
-	
+	ArrayList<StuScore> list = new ArrayList<>();
+
 	StuDeck() {
 		list.add(new StuScore("홍길동",100,99,100));
 		list.add(new StuScore("박길동",100,89,100));
@@ -15,7 +15,6 @@ public class StuDeck {
 		list.add(new StuScore("최길동",100,69,100));
 		list.add(new StuScore("임길동",100,59,100));
 	}
-	
 	
 	String[] title = {"번호","이름","국어","영어","수학","합계","평균"};
 	int kor, eng, math;
@@ -39,12 +38,13 @@ public class StuDeck {
 
 	void stuInput() {
 		
-		System.out.println("학생 이름을 입력하세요(0.이전 페이지)");
+		System.out.println((StuScore.count+1)+"번 학생 이름을 입력하세요(0.이전 페이지)");
 		name = scan.next();
 		if(name.equals("0")) {
 			System.out.println("## 이전 페이지로 이동 합니다.");
 			return;
 		}
+		
 		System.out.println("국어점수를 입력 하세요 >> ");
 		kor = scan.nextInt();
 		System.out.println("영어점수를 입력 하세요 >> ");
@@ -58,29 +58,69 @@ public class StuDeck {
 	}
 	
 	void stuPrint() {
+		// 타이틀 출력
 		stuTitle();
 		
 		for(int i=0;i<list.size();i++) {
 			
-			StuScore s = (StuScore)list.get(i);
-			System.out.printf("%d\t%s\t%d\t%d\t%d\t%d\t%.2f\n",
-					s.getNo(),s.getName(),s.getKor(),s.getEng(),s.getMath());
-			
+			StuScore s = list.get(i);
+			System.out.println(s);  // String toString() 오버라이드 처리 후 사용가능 
+//			System.out.printf("%d\t%s\t%d\t%d\t%d\t%d\t%.2f\n",
+//				s.getNo(),s.getName(),s.getKor(),s.getEng(),s.getMath(),s.getTotal(),s.getAvg());
 		}
+	}
+	
+	void stuUpdate() {
+		int temp = 0;
+		System.out.println("수정할 학생 이름을 입력하세요 >> ");
+		name = scan.next();
+		for(int i=0;i<list.size();i++) {
+			
+			StuScore s = list.get(i);
+			
+			if(name.equals(s.getName())) {
+				temp = 1;
+				System.out.println(name+" 학생을 정말로 수정 하시겠습니까?(1.수정,0.취소)");
+				int choice = scan.nextInt();
+				if(choice == 1) {
+					for(int j=0;j<3;j++) {
+						System.out.println((j+1)+"."+title[j+2]);
+					}
+					System.out.println("과목을 선택하세요 >> ");					
+					choice = scan.nextInt();
+					
+					System.out.println("수정할 점수를 입력하세요 >> ");
+					
+					
+					
+					
+					System.out.println("");
+					
+
+					System.out.println("## 수정 되었습니다.");
+				}else {
+					System.out.println("## 수정이 취소 되었습니다.");
+				}
+				break;
+			}			
+		}//for		
 		
+		if(temp == 0) {
+			System.out.println("## 검색한 학생을 찾을 수 없습니다.");
+		}		
 	}
 	
 	void stuDelete() {
 		int temp = 0;
-		System.out.println("삭제할 학생이름 입력 >> ");
+		System.out.println("삭제할 학생 이름을 입력하세요 >> ");
 		name = scan.next();
 		for(int i=0;i<list.size();i++) {
 			
-			StuScore s = (StuScore)list.get(i);
+			StuScore s = list.get(i);
 			
 			if(name.equals(s.getName())) {
 				temp = 1;
-				System.out.println("학생을 정말로 삭제 하시겠습니까?(0.취소)");
+				System.out.println(name+" 학생을 정말로 삭제 하시겠습니까?(1.삭제,0.취소)");
 				int choice = scan.nextInt();
 				if(choice == 1) {
 					list.remove(i);

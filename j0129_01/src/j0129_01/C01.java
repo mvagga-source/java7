@@ -1,11 +1,10 @@
-package j0128_02;
+package j0129_01;
 
-public class C02 {
+public class C01 {
 
 	public static void main(String[] args) {
-
+		
 		StuDeck s = new StuDeck();
-
 		
 		loop:while(true) {
 			
@@ -19,6 +18,7 @@ public class C02 {
 				s.stuInput();
 				break;
 			case 2:
+				s.stuUpdate();
 				break;
 			case 3:
 				s.stuPrint();
@@ -32,8 +32,8 @@ public class C02 {
 				
 			}//switch
 			
-		}//while
-		
-	}// main
+		}//while		
+
+	}
 
 }
