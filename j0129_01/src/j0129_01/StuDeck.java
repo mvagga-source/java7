@@ -1,6 +1,7 @@
 package j0129_01;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class StuDeck {
@@ -24,7 +25,7 @@ public class StuDeck {
 		System.out.println();		
 		System.out.println("          [학생성적 프로그햄]");
 		System.out.println("==================================");
-		System.out.println("1.입력,2.수정,3.출력,4.삭제,5.검색,0.종료");
+		System.out.println("1.입력,2.출력,3.수정,4.삭제,5.검색,0.종료");
 		System.out.println("==================================");
 		System.out.println();		
 	}
@@ -61,13 +62,26 @@ public class StuDeck {
 		// 타이틀 출력
 		stuTitle();
 		
-		for(int i=0;i<list.size();i++) {
-			
-			StuScore s = list.get(i);
-			System.out.println(s);  // String toString() 오버라이드 처리 후 사용가능 
+		
+		Iterator<StuScore> it = list.iterator();
+		while(it.hasNext()) {
+			StuScore s = it.next();
+			System.out.printf("%d\t%s\t%d\t%d\t%d\t%d\t%.2f\n",
+					s.getNo(),s.getName(),s.getKor(),s.getEng(),s.getMath(),s.getTotal(),s.getAvg());			
+		}
+		
+		// for-each
+//		for(StuScore s : list){
+//			System.out.println(s);
+//		}
+		
+//		for(int i=0;i<list.size();i++) {
+//			
+//			StuScore s = list.get(i);
+//			System.out.println(s);  // String toString() 오버라이드 처리 후 사용가능 
 //			System.out.printf("%d\t%s\t%d\t%d\t%d\t%d\t%.2f\n",
 //				s.getNo(),s.getName(),s.getKor(),s.getEng(),s.getMath(),s.getTotal(),s.getAvg());
-		}
+//		}
 	}
 	
 	void stuUpdate() {
@@ -114,24 +128,44 @@ public class StuDeck {
 		int temp = 0;
 		System.out.println("삭제할 학생 이름을 입력하세요 >> ");
 		name = scan.next();
-		for(int i=0;i<list.size();i++) {
+		
+		Iterator it = list.iterator();
+		while(it.hasNext()) {
 			
-			StuScore s = list.get(i);
+			StuScore s = (StuScore)(it.next());
 			
 			if(name.equals(s.getName())) {
 				temp = 1;
 				System.out.println(name+" 학생을 정말로 삭제 하시겠습니까?(1.삭제,0.취소)");
 				int choice = scan.nextInt();
 				if(choice == 1) {
-					list.remove(i);
+					it.remove();
 					System.out.println("## 삭제 되었습니다.");
 				}else {
 					System.out.println("## 삭제가 취소 되었습니다.");
 				}
 				break;
-			}			
-		}//for
+			}
+		}// while
 		
+//		for(int i=0;i<list.size();i++) {
+//			
+//			StuScore s = list.get(i);
+//			
+//			if(name.equals(s.getName())) {
+//				temp = 1;
+//				System.out.println(name+" 학생을 정말로 삭제 하시겠습니까?(1.삭제,0.취소)");
+//				int choice = scan.nextInt();
+//				if(choice == 1) {
+//					list.remove(i);
+//					System.out.println("## 삭제 되었습니다.");
+//				}else {
+//					System.out.println("## 삭제가 취소 되었습니다.");
+//				}
+//				break;
+//			}			
+//		}//for
+
 		if(temp == 0) {
 			System.out.println("## 검색한 학생을 찾을 수 없습니다.");
 		}

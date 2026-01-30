@@ -1,42 +1,32 @@
-package j0129_01;
+package j0130_01;
 
-public class StuScore {
-	
-//	객체 instanceof 타입
-//	class Duck implements Flyable {}
-//	Duck d = new Duck();
-//	d instanceof Flyable   // true
+public class Stuscore {
 	
 	{
 		count++;
 		no = count;
 	}
 	
-	StuScore(){}
-	StuScore(String name,int kor,int eng,int math) {
+	Stuscore(){}
+	Stuscore(String name,int kor,int eng,int math){
 		this.name = name;
 		this.kor = kor;
 		this.eng = eng;
 		this.math = math;
 		this.total = kor+eng+math;
-		this.avg = this.total/3.0;
-	}
-	
-	@Override // Object클래스 메소드임
-	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		if(this.name.equals(((StuScore)obj).name)) {
-			return true;
-		}
-		return false;
+		this.avg = (kor+eng+math)/3.0;
 	}
 
-	@Override // 해당 클래스에서만 사용가능하며,객체인자값만 영향을 받음
- 	public String toString() {
- 		return String.format("%d\t%s\t%d\t%d\t%d\t%d\t%.2f",
- 				this.no,this.name,this.kor,this.eng,this.math,this.total,this.avg);
- 	}
-	
+	Stuscore(int no, String name, int kor, int eng, int math, int total, double avg) {
+		this.no = no;
+		this.name = name;
+		this.kor = kor;
+		this.eng = eng;
+		this.math = math;
+		this.total = total;
+		this.avg = avg;
+	}
+
 	static int count;
 	private int no;
 	private String name;
@@ -79,10 +69,16 @@ public class StuScore {
 	public int getTotal() {
 		return total;
 	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
 	public double getAvg() {
 		return avg;
 	}
-
+	public void setAvg(double avg) {
+		this.avg = avg;
+	}
+	
 	
 	
 }

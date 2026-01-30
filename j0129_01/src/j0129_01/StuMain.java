@@ -1,6 +1,6 @@
 package j0129_01;
 
-public class C01 {
+public class StuMain {
 
 	public static void main(String[] args) {
 		
@@ -18,10 +18,10 @@ public class C01 {
 				s.stuInput();
 				break;
 			case 2:
-				s.stuUpdate();
+				s.stuPrint();				
 				break;
 			case 3:
-				s.stuPrint();
+				s.stuUpdate();				
 				break;
 			case 4:
 				s.stuDelete();
